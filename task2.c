@@ -19,7 +19,7 @@ int main() {
 
     start = clock();
     while(fib_next < 4000000) {
-        if (fib2 % 2 == 0)
+        if ((fib2 & 1) == 0) // if ((fib2 % 2) == 0))
             res += fib2;
         fib_next = fib1 + fib2;
         fib1 = fib2;

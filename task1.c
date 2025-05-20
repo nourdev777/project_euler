@@ -6,7 +6,7 @@
 // The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
-// // version 1
+// // VERSION 1
 // int main() {
 //     int i = 1;
 //     int res = 0;
@@ -26,7 +26,7 @@
 //     return 0;
 // }
 
-// version 2
+// VERSION 2
 int main() {
     int i = 0;
     int res = 0;
