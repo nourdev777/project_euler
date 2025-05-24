@@ -12,7 +12,43 @@
 // The program uses the clock() function to measure the time taken for the computation.
 // The time taken is printed in seconds.
 
+// // VERSION 1: Brute-force approach (it works faster then VERSION 2,
+// // but is less efficient for large numbers - for example 999999999989)
+// int main() {
+//     long long nbr;
+//     printf("Enter a number to find its largest prime factor: ");
+//     scanf("%lld", &nbr);
+//     if (nbr < 2) {
+//         printf("The number is too small to have prime factors.\n");
+//         return 0;
+//     }
 
+//     double time_spent = 0.0;
+//     clock_t begin = clock();
+
+//     long long largest_prime_factor = 0;
+//     for (long long i = 2; i <= nbr; i++) {
+//         if (nbr % i == 0) {
+//             largest_prime_factor = i;
+//             printf("Found factor: %lld\n", largest_prime_factor);
+//             while (nbr % i == 0) {
+//                 nbr /= i;
+//             }
+//         }
+//     }
+//     if (nbr > 1) {
+//         largest_prime_factor = nbr;
+//         printf("Found remaining prime factor: %lld\n", largest_prime_factor);
+//     }
+//     clock_t end = clock();
+//     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+//     printf("Largest prime factor: %lld\n", largest_prime_factor);
+//     printf("Time taken: %f seconds\n", time_spent);
+
+//     return 0;
+// }
+
+// VERSION 2: Optimized approach using square root limit
 int main() {
     long long nbr;
     printf("Enter a number to find its largest prime factor: ");
@@ -26,14 +62,14 @@ int main() {
     clock_t begin = clock();
 
 
-    int division_limit = (int)(sqrt((double)nbr) + 1);
-    printf("Divide until number: %d\n", division_limit);
+    long long division_limit = (long long)(sqrt((double)nbr) + 1);
+    printf("Divide until number: %lld\n", division_limit);
 
-    int largest_prime_factor = 0;
-    for (int i = 2; i <= division_limit; i++) {
+    long long largest_prime_factor = 0;
+    for (long long i = 2; i <= division_limit; i++) {
         if (nbr % i == 0) {
             largest_prime_factor = i;
-            printf("Found factor: %d\n", largest_prime_factor);
+            printf("Found factor: %lld\n", largest_prime_factor);
             while (nbr % i == 0) {
                 nbr /= i;
             }
@@ -41,13 +77,12 @@ int main() {
     }
     if (nbr > 1) {
         largest_prime_factor = nbr;
-        printf("Found remaining prime factor: %d\n", largest_prime_factor);
+        printf("Found remaining prime factor: %lld\n", largest_prime_factor);
     }
     clock_t end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Largest prime factor: %d\n", largest_prime_factor);
+    printf("Largest prime factor: %lld\n", largest_prime_factor);
     printf("Time taken: %f seconds\n", time_spent);
 
     return 0;
 }
-
